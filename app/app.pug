@@ -1,0 +1,34 @@
+extends views/layout.pug
+
+include ./views/mixins/sections/add_homepage
+include ./views/mixins/sections/add_interactions
+include ./views/mixins/sections/add_attendance
+include ./views/mixins/sections/add_productivity
+
+include ./views/mixins/sections/add_qpa
+include ./views/mixins/qpa_mixins/get_qpa_custom_dates_solution_report
+include ./views/mixins/qpa_mixins/get_qpa_custom_dates_team_report
+include ./views/mixins/qpa_mixins/get_qpa_ytd_solution_report
+
+
+block content
+
+  .pane.sections-list
+
+    #homepage_sec.app-section
+      +add_homepage('HOMEPAGE')
+
+    #interactions_sec.app-section
+      +add_interactions('INTERACTIONS')
+
+    #attendance_sec.app-section
+      +add_attendance('ATTENDANCE')
+
+    #productivity_sec.app-section
+      +add_productivity('PRODUCTIVITY')
+
+    #qpa_sec.app-section
+      +add_qpa('QPA')
+    +get_qpa_custom_dates_solution_report('placeholder')
+    +get_qpa_custom_dates_team_report('placeholder')
+    +get_ytd_qpa_solution_report('placeholder')

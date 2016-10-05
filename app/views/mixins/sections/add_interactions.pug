@@ -1,0 +1,27 @@
+mixin add_interactions(title)
+
+  .page-rows
+    h1.text-center= title
+    span.vert-space
+
+    .row.interactions-first-row
+      .card.interaction-card
+        .content
+          #interactions-first-report
+
+    .row.interactions-second-row
+      .card.interaction-card
+        .content
+          #interactions-second-report
+
+  script.
+    var query_interactions = require('./main-process/db/queries/interaction_queries.js')
+    var sfi_interactions_js = require('./main-process/db/graph_builders/interactions/interactions_sfi.js')
+
+    var query_to_execute = query_interactions.call_metrics_by_solution_by_week
+    var graph_builder_procs = [
+                                sfi_interactions_js.build_homepage_calls_ans_vs_off_graph,
+                                sfi_interactions_js.build_homepage_calls_abd_flow_tran_graph
+                              ]
+
+    window.onload = execute_and_build_sql(query_to_execute, graph_builder_procs)

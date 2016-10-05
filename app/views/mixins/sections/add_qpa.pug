@@ -1,0 +1,52 @@
+mixin add_qpa(title)
+
+  .page-rows
+    h1.text-center= title
+    span.vert-space
+
+    .qpa-homepage-header
+      h3.text-center Reports
+
+    .qpa-reports-container
+      h4.text-center Custom Time Frame Reports
+
+      .qpa-ytd-reports-selection.qpa-card-group
+        #qpa_choose_dates_solution.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Solution
+        #qpa_choose_dates_teams.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Team
+        #qpa_choose_dates_agent.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Agent
+
+    .qpa-reports-container
+      h4.text-center Year-To-Date Reports
+
+      .qpa-ytd-reports-selection.qpa-card-group
+        #qpa_ytd_solution.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Solution
+        #qpa_ytd_solution_workgroup_teams.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Team
+        #qpa_ytd_agent.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Agent
+
+    .qpa-reports-container
+      h4.text-center Month-To-Date Reports
+
+      .qpa-ytd-reports-selection.qpa-card-group
+        #qpa_mtd_solution.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Solution
+        #qpa_mtd_solution_workgroup_teams.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Team
+        #qpa_mtd_agent.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Agent
+
+    .qpa-reports-container
+      h4.text-center Week-To-Date Reports
+
+      .qpa-ytd-reports-selection.qpa-card-group
+        #qpa_wtd_solution.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Solution
+        #qpa_wtd_solution_workgroup_teams.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Team
+        #qpa_wtd_agent.qpa-homepage-card.qpa-card-group-card.animate-button.main-click-el
+          | Agent

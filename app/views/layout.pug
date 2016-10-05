@@ -1,0 +1,38 @@
+include mixins/navbar-mixin.pug
+
+doctype html
+html(lang="en")
+  head
+    block head
+      block title
+        title WFO Reporting Tool
+      meta(charset='utf-8')
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+      block styles
+        link(href='styles/photonkit/css/photon.min.css', rel='stylesheet', type='text/css')
+        link(href='styles/global.css', rel='stylesheet', type='text/css')
+        link(href='styles/sidebar.css', rel='stylesheet', type='text/css')
+        link(href='styles/sections.css', rel='stylesheet', type='text/css')
+        link(href='styles/sections/homepage.css', rel='stylesheet')
+        link(href='styles/print.css', rel='stylesheet')
+
+      script(src='app.js')
+      script.
+        window.$ = window.jQuery = require('jquery')
+        var execute_and_build_sql = require('./assets/js/execute_sql.js')
+        var global_functions = require('./assets/js/shared_report_objects.js')
+
+  body
+    .window
+
+      .window-content
+        .pane-group
+
+          +navbar_builder('Sections')
+
+          block content
+
+    block scripts
+      script(type='text/javascript', src='lib/nav.js')
+      script(type='text/javascript', src='lib/ex-links.js')
