@@ -1,58 +1,98 @@
 var sql = require('seriate')
+var _ = require('lodash')
 var query_default = require('../../main-process/db/queries/default_queries.js')
 
 module.exports = {
-  get_all_solutions: function () {
-    var solution_query = query_default.get_distinct_qpa_solutions
+  get_active_director: function () {
+    var director_query = query_default.get_active_director
 
     sql.execute({
-      query: solution_query
+      query: director_query
     }).then(function (data) {
       console.log(data)
+      var data = data[0];
 
-      _.forEach(data, function (s) {
-        var solution = s.Solution
-        Solutions.push(solution)
-      })
+      return data;
+
     }, function (err) {
       console.log(err)
     })
   },
 
-  get_all_supervisors: function () {
-    var supervisor_query = query_default.get_distinct_qpa_supervisors
+  get_distinct_mgrs: function () {
+    var mgr_query = query_default.get_distinct_mgrs
+    var mgrs = []
 
     sql.execute({
-      query: supervisor_query
+      query: mgr_query
     }).then(function (data) {
       console.log(data)
 
       _.forEach(data, function (s) {
-        var supervisor = {
-          solution: s.Solution,
-          name: s.Supervisor,
-          solution_supervisor: s.SolutionSupervisor
-        }
+        var mgr = {
+          id: s.id,
+          name: s.name,
+          workgroup: s.workgroup,
+          title: s.title
+        };
 
-        Supervisors.push(supervisor)
-      })
+        mgrs.push(mgr);
+      });
+
+      return mgrs;
+
     }, function (err) {
       console.log(err)
     })
   },
 
-  get_all_agents: function () {
-    var agent_query = query_default.get_distinct_qpa_agents
+  get_distinct_supes: function () {
+    var supe_query = query_default.get_distinct_supes
+    var supes = []
 
     sql.execute({
-      query: agent_query
+      query: supe_query
     }).then(function (data) {
       console.log(data)
 
       _.forEach(data, function (s) {
-        var agent = s.Agent
-        Agents.push(agent)
-      })
+        var supe = {
+          id: s.id,
+          name: s.name,
+          workgroup: s.workgroup,
+          title: s.title
+        };
+
+        supes.push(supe);
+      });
+
+      return supes;
+
+    }, function (err) {
+      console.log(err)
+    })
+  },
+
+  get_workgroups: function () {
+    var wrkgrp_query = query_default.get_current_workgroups
+    var wrkgrps = []
+
+    sql.execute({
+      query: wrkgrp_query
+    }).then(function (data) {
+      console.log(data)
+
+      _.forEach(data, function (s) {
+        var wrkgrp = {
+          id: s.id,
+          name: s.name
+        };
+
+        wrkgrps.push(wrkgrp);
+      });
+
+      return wrkgrps;
+
     }, function (err) {
       console.log(err)
     })

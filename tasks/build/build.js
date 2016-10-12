@@ -36,10 +36,12 @@ var paths = {
 var fs = require('fs')
 var sql_data = require('./sql_task_helpers.js')
 var global_data = {
-  Solutions: sql_data['Solutions'],
-  Supervisors: sql_data['Supervisors'],
-  Agents: sql_data['Agents']
+  orgObj: sql_data
 }
+
+// console.log(JSON.stringify(sql_data, null, 3));
+// console.log(JSON.stringify(global_data, null, 3));
+
 var locals_data_file = './tmp/data.json'
 
 // -------------------------------------
@@ -56,6 +58,7 @@ gulp.task('clean', function () {
 
 var set_globals = function () {
   return global_data
+  // console.log(JSON.stringify(global_data, null, 3));
 }
 
 gulp.task('set_globals', ['clean'], set_globals)

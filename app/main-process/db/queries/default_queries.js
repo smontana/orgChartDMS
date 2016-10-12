@@ -1,8 +1,11 @@
 module.exports = {
-  // -- RETURNS Solution
-  get_distinct_qpa_solutions: 'EmployeeServices.dbo.get_distinct_QPA_solutions',
-  // -- RETURNS Supervisor
-  get_distinct_qpa_supervisors: 'EmployeeServices.dbo.get_distinct_QPA_supervisors',
-  // -- RETURNS Agent
-  get_distinct_qpa_agents: 'EmployeeServices.dbo.get_distinct_QPA_agents'
+  get_active_director: 'DMSOrgChart.dbo.get_distinct_active_director',
+  get_distinct_mgrs: 'DMSOrgChart.dbo.get_distinct_active_mgrs',
+  get_distinct_supes: 'DMSOrgChart.dbo.get_distinct_active_supervisors',
+  get_current_workgroups: 'DMSOrgChart.dbo.get_current_workgroups',
+  //-------------------------------------------------------------
+  get_current_agents: 'DMSOrgChart.dbo.get_current_agents',
+  get_current_supes: 'DMSOrgChart.dbo.get_current_supes',
+  get_current_mgrs: 'DMSOrgChart.dbo.get_current_mgrs',
+  get_current_director: 'DMSOrgChart.dbo.get_current_director'
 }

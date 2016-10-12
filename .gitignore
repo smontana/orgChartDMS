@@ -9,3 +9,6 @@ Thumbs.db
 /build/
 /releases/
 /tmp/
+
+test_sql_data_script.js
+test_sql_data_script__2.js
