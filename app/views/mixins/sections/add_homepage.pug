@@ -9,18 +9,17 @@ mixin add_homepage(title)
   script.
     //- var org_chart_builder = require('./assets/js/build_org_chart.js')
     require('orgchart')
-    var org_obj = org_data()
 
-    var org_chart_options = {
-      'data': org_obj,
-      'nodeID': 'id',
-      'nodeContent': 'title',
-      'exportButton': true,
-      'exportFilename': 'DMS Org Chart'
-    }
+    function build_org_chart (data) {
+      var org_chart_options = {
+        'data': data,
+        'nodeID': 'id',
+        'nodeContent': 'title',
+        'exportButton': true,
+        'exportFilename': 'DMS Org Chart'
+      }
 
-    function build_org_chart () {
       $('#chart-container').orgchart(org_chart_options);
     }
 
-    window.onload = build_org_chart()
+    window.onload = build_org_chart(org_data)

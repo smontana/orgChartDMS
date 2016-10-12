@@ -38,6 +38,7 @@ function director (id, name, role, mgr_arr) {
   this.title = role;
   this.className = 'director-level';
   this.children = mgr_arr;
+  this.relationship = '001';
 }
 
 function manager (id, name, role, mgr_id, supe_arr) {
@@ -47,6 +48,7 @@ function manager (id, name, role, mgr_id, supe_arr) {
   this.mgr_id = mgr_id;
   this.className = 'mgr-level';
   this.children = supe_arr;
+  this.relationship = '111';
 }
 
 function supervisor (id, name, role, mgr_id, agent_arr) {
@@ -56,6 +58,7 @@ function supervisor (id, name, role, mgr_id, agent_arr) {
   this.mgr_id = mgr_id;
   this.className = 'supe-level';
   this.children = agent_arr;
+  this.relationship = '111';
 }
 
 function agent (id, name, role, mgr_id) {
@@ -64,6 +67,7 @@ function agent (id, name, role, mgr_id) {
   this.title = role;
   this.mgr_id = mgr_id;
   this.className = 'agent-level';
+  this.relationship = '110';
 }
 
 function get_direct_reports (emp_id, grouped_arr) {
@@ -158,9 +162,9 @@ var get_director = function () {
       cs_director.push(boss);
     })
 
-    completeOrg = cs_director[0];
+    // completeOrg = cs_director[0];
 
-    return completeOrg;
+    module.exports = cs_director[0];
 
     console.log('STEP 4: COMPLETED Director Query');
   }, function (err) {
@@ -186,10 +190,9 @@ Q.fcall(get_all_agents)
 .then(get_all_supervisors)
 .then(get_all_managers)
 .then(get_director)
-.then(return_data)
 .catch(function (error) {
   console.error('ERROR: ', error)
 })
 .done();
 
-module.exports = return_data;
+// module.exports = return_data;
